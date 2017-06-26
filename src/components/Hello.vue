@@ -2,22 +2,38 @@
   
    <div id="center">
       Email
-      <input style="float: right;"type="text" name="email"><br><br>
+      <input style="float: right; " v-model="email"type="text" name="email"><br><br>
       Password
-      <input style="float: right;" type="password" name="password"><br><br>
-      <button onclick="login">Login</button>
+      <input style="float: right;" v-model="password" type="password" name="password"><br><br>
+      <button v-on:click="login">Login</button>
   </div>  
 </template>
 
 <script>
 export default {
   data  () {
-    return {}
+    return {email: '',
+      password: ''}
   },
   methods: {
     login () {
-      this.$router.replace('/api/hello')
-      alert('hello you are login')
+        // this.$router.replace('/api/login')
+      var createHash = require('sha.js')
+      var sha256 = createHash('sha256')
+      var passwordEncrypt = sha256.update(this.password, 'utf8').digest('hex')
+      passwordEncrypt = passwordEncrypt.toUpperCase()
+      var inputData = {'UserEmail': this.email,
+        'UserPassword': passwordEncrypt
+      }
+      this.$http.get('http://localhost:5000/api/Login', inputData).then(function (result) {
+        var response = result.body
+        if (response === 'true') {
+          alert('Welcome your are loged')
+          this.$router.push('/Home')
+        }
+      },
+        function (result) {
+        })
     }
   }
 }

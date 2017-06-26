@@ -30,16 +30,14 @@ namespace vuenetcore.Controllers
                  identity.AddClaim(new Claim(ClaimTypes.Role, "User"));
                  identity.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
                  HttpContext.Authentication.SignInAsync("CustomAuth", new ClaimsPrincipal(identity)).Wait();
-            var msg = new { Message = "You are log in!" };
-            return this.Ok(msg);
+                 return new ObjectResult("true");
         }
            [Route("logout")]
         [HttpGet]
         public IActionResult logout()
         {
             HttpContext.Authentication.SignOutAsync("CustomAuth").Wait();
-            var msg = new { Message = "You are log out!" };
-            return this.Ok(msg);
+            return new ObjectResult("Logout!");
         }
     }
 }
