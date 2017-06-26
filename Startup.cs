@@ -29,6 +29,7 @@ namespace vuenetcore
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddLogging();
             services.AddMvc();
         }
 
@@ -50,6 +51,14 @@ namespace vuenetcore
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+               app.UseCookieAuthentication(new CookieAuthenticationOptions()
+            {
+                AuthenticationScheme = "CustomAuth",
+                
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = false,
+                CookieHttpOnly =false
+            });
 
             // Setup default files middleware
             // This must come before UseStaticFiles

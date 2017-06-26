@@ -1,39 +1,23 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
-  </div>
+  
+   <div id="center">
+      Email
+      <input style="float: right;"type="text" name="email"><br><br>
+      Password
+      <input style="float: right;" type="password" name="password"><br><br>
+      <button onclick="login">Login</button>
+  </div>  
 </template>
 
 <script>
 export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+  data  () {
+    return {}
   },
-  created () {
-    if (this.$http === undefined) {
-      console.log('que putas!')
-    } else {
-      this.$http.get('/api/hello').then((res) => { this.msg = res.body.message }
-      ).catch((ex) => console.log(ex))
+  methods: {
+    login () {
+      this.$router.replace('/api/hello')
+      alert('hello you are login')
     }
   }
 }
@@ -57,5 +41,13 @@ li {
 
 a {
   color: #42b983;
+}
+#center {
+  background-color:rgb(240,240,240);
+  height:20%;width:250px; 
+  position: absolute;top:35%;right:40%;
+  text-align:left;
+  padding:5px;
+  
 }
 </style>
