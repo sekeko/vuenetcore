@@ -12,12 +12,11 @@ namespace vuenetcore.Controllers
     public class ApiController : Controller
     {
         [Route("hello")]
-         [Authorize]  
+        [Authorize]  
         [HttpGet]
         public IActionResult Hello()
         {
-            var msg = new { Message = "Hello SEKEKO World" };
-            return this.Ok(msg);
+            return new ObjectResult("Welcome to my world!");
         }
          [Route("login")]
         [HttpGet]
@@ -32,7 +31,7 @@ namespace vuenetcore.Controllers
                  HttpContext.Authentication.SignInAsync("CustomAuth", new ClaimsPrincipal(identity)).Wait();
                  return new ObjectResult("true");
         }
-           [Route("logout")]
+        [Route("logout")]
         [HttpGet]
         public IActionResult logout()
         {

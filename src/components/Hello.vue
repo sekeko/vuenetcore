@@ -6,6 +6,8 @@
       Password
       <input style="float: right;" v-model="password" type="password" name="password"><br><br>
       <button v-on:click="login">Login</button>
+      <button v-on:click="hello">GetHello</button>
+      <button v-on:click="logout">Logout</button>
   </div>  
 </template>
 
@@ -29,8 +31,22 @@ export default {
         var response = result.body
         if (response === 'true') {
           alert('Welcome your are loged')
-          this.$router.push('/Home')
+          // this.$router.push('/Home')
         }
+      },
+        function (result) {
+        })
+    },
+    hello () {
+      this.$http.get('http://localhost:5000/api/hello', {'name': 'wandy'}).then(function (result) {
+        alert(result.body)
+      },
+        function (result) {
+        })
+    },
+    logout () {
+      this.$http.get('http://localhost:5000/api/logout', {'name': 'wandy'}).then(function (result) {
+        alert(result.body)
       },
         function (result) {
         })
