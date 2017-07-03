@@ -31,7 +31,7 @@ namespace vuenetcore.Controllers
 
         [Route("UploadSingleFile")]
         [HttpPost]
-        public IActionResult UploadSingleFile(IFormFile oneFile)
+        public IActionResult UploadSingleFile(IFormFile oneFile, string customerId, string year )
         {
 
             PostToAzureStorage(oneFile);
