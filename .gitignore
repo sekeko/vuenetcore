@@ -6,3 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 bin/
 obj/
+/obj/vuenetcore.csproj.nuget.g.props
+/obj
+/wwwroot/app.js
+/wwwroot/index.html
