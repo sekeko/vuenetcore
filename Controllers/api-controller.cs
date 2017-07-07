@@ -17,7 +17,7 @@ namespace vuenetcore.Controllers
         [HttpGet]
         public IActionResult Hello()
         {
-            var msg = new { Message = "Hello SEKEKOs place World" };
+            var msg = new { Message = "SEKEKOs place ROCKS!!!" };
             return this.Ok(msg);
         }
 
